@@ -27,7 +27,10 @@ function afterConnection() {
   console.log("Here is the information of Products available for sale")
   connection.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
-    console.log(res);
+    res.forEach(element => {
+      //Print options.
+      console.log(`Id(${element.item_id}) | Product (${element.product_name}) | Price ($${element.price}) | Stock (${element.stock_quantity})`);
+  })
     start();
   });
 }
@@ -83,25 +86,28 @@ function buyProduct() {
             }
           ])
           .then(function(answer) {
+            // console.log(answer.units.stock_quantity)
             // get the information of the chosen item
             var chosenItem;
             for (var i = 0; i < results.length; i++) {
               if (results[i].item_id === answer.choice) {
                 chosenItem = results[i];
+                // console.log(results[i])
+                // console.log(chosenItem)
               }
             }
     
-            // determine if bid was high enough
-            if (chosenItem.stock_quantity > parseInt(answer.units)) {
-              // bid was high enough, so update db, let the user know, and start over
+            // determine if stock was high enough
+            if (chosenItem.stock_quantity >= answer.units) {
+              // if stock high enough, so update db, let the user know, and start over
               connection.query(
                 "UPDATE products SET ? WHERE ?",
                 [
                   {
-                    stock_quantity: stock_quantity - answer.units
+                    stock_quantity: chosenItem.stock_quantity - answer.units
                   },
                   {
-                    id: chosenItem.id
+                    item_id: chosenItem.item_id
                   }
                 ],
                 function(error) {
