@@ -103,12 +103,8 @@ function buyProduct() {
               connection.query(
                 "UPDATE products SET ? WHERE ?",
                 [
-                  {
-                    stock_quantity: chosenItem.stock_quantity - answer.units
-                  },
-                  {
-                    item_id: chosenItem.item_id
-                  }
+                  {stock_quantity: chosenItem.stock_quantity - answer.units},
+                  {item_id: chosenItem.item_id}
                 ],
                 function(error) {
                   if (error) throw err;
@@ -126,16 +122,6 @@ function buyProduct() {
       });
     }
     
-
-// IF Condition > NO
-// Once the customer has placed the order, your application should check if your store has enough of the product to meet the customer's request.
-// If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
- 
-
-//ELSE IF
-// However, if your store does have enough of the product, you should fulfill the customer's order.
-// This means updating the SQL database to reflect the remaining quantity.
-// Once the update goes through, show the customer the total cost of their purchase.
 
 
 
