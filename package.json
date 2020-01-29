@@ -1,0 +1,23 @@
+{
+  "name": "NodeandMysql",
+  "version": "1.0.0",
+  "description": "Inventory Management",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekpatilbtc/node-and-mysql.git"
+  },
+  "author": "Abhishek Patil",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "*",
+    "moment": "^2.24.0"
+  },
+  "bugs": {
+    "url": "https://github.com/abhishekpatilbtc/node-and-mysql/issues"
+  },
+  "homepage": "https://github.com/abhishekpatilbtc/node-and-mysql#readme"
+}

@@ -27,10 +27,8 @@ function afterConnection() {
   console.log("Here is the information of Products available for sale")
   connection.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
-    res.forEach(element => {
-      //Print options.
-      console.log(`Id(${element.item_id}) | Product (${element.product_name}) | Price ($${element.price}) | Stock (${element.stock_quantity})`);
-  })
+  
+    console.table(res)
     start();
   });
 }
@@ -92,8 +90,8 @@ function buyProduct() {
             for (var i = 0; i < results.length; i++) {
               if (results[i].item_id === answer.choice) {
                 chosenItem = results[i];
-                // console.log(results[i])
-                // console.log(chosenItem)
+                console.log("Order Successful!");
+                console.log("Updated stock for " + chosenItem.product_name + ": " +chosenItem.stock_quantity)
               }
             }
     
@@ -108,7 +106,8 @@ function buyProduct() {
                 ],
                 function(error) {
                   if (error) throw err;
-                  console.log("Order Successful!");
+                  console.log("-------------");
+                  // afterConnection();
                   start();
                 }
               );
@@ -122,6 +121,4 @@ function buyProduct() {
       });
     }
     
-
-
 
