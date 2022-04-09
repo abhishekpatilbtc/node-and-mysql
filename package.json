@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "mysql": "*",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   },
   "bugs": {
     "url": "https://github.com/abhishekpatilbtc/node-and-mysql/issues"
